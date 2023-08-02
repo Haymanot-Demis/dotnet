@@ -1,0 +1,15 @@
+C:\Projects\dotnet\Shape-Hierarchy\bin\Debug\net7.0\Shape-Hierarchy.exe
+C:\Projects\dotnet\Shape-Hierarchy\bin\Debug\net7.0\Shape-Hierarchy.deps.json
+C:\Projects\dotnet\Shape-Hierarchy\bin\Debug\net7.0\Shape-Hierarchy.runtimeconfig.json
+C:\Projects\dotnet\Shape-Hierarchy\bin\Debug\net7.0\Shape-Hierarchy.dll
+C:\Projects\dotnet\Shape-Hierarchy\bin\Debug\net7.0\Shape-Hierarchy.pdb
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.csproj.AssemblyReference.cache
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.AssemblyInfoInputs.cache
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.AssemblyInfo.cs
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.csproj.CoreCompileInputs.cache
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.dll
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\refint\Shape-Hierarchy.dll
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.pdb
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\Shape-Hierarchy.genruntimeconfig.cache
+C:\Projects\dotnet\Shape-Hierarchy\obj\Debug\net7.0\ref\Shape-Hierarchy.dll

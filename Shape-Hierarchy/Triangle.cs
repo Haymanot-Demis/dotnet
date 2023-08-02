@@ -20,9 +20,11 @@ public class Triangle: Shape{
 
     public override double CalculateArea(){
         if (Base > 0  && Height > 0){
+            Console.WriteLine("Calculating ");
             return 0.5 * Base * Height;
         }
 
+        // Heron's formula
         double s = (Side1 + Side2 + Side3) / 2;
         return Math.Sqrt(s * (s - Side1) * (s - Side2) * (s - Side3));
     }
