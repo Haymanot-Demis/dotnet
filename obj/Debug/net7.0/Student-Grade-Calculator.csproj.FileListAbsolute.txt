@@ -1,0 +1,15 @@
+C:\Projects\Student-Grade-Calculator\bin\Debug\net7.0\Student-Grade-Calculator.exe
+C:\Projects\Student-Grade-Calculator\bin\Debug\net7.0\Student-Grade-Calculator.deps.json
+C:\Projects\Student-Grade-Calculator\bin\Debug\net7.0\Student-Grade-Calculator.runtimeconfig.json
+C:\Projects\Student-Grade-Calculator\bin\Debug\net7.0\Student-Grade-Calculator.dll
+C:\Projects\Student-Grade-Calculator\bin\Debug\net7.0\Student-Grade-Calculator.pdb
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.csproj.AssemblyReference.cache
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.AssemblyInfoInputs.cache
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.AssemblyInfo.cs
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.csproj.CoreCompileInputs.cache
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.dll
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\refint\Student-Grade-Calculator.dll
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.pdb
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\Student-Grade-Calculator.genruntimeconfig.cache
+C:\Projects\Student-Grade-Calculator\obj\Debug\net7.0\ref\Student-Grade-Calculator.dll
