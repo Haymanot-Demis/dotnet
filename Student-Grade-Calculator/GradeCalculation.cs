@@ -1,8 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text.RegularExpressions;
-
-public class Program{
-
+public class GradeCalculation{
     public static void Main(string[] args){
         Console.WriteLine(IsPalindrome("Enter#*^&@student name!"));
         Console.WriteLine(IsPalindrome("madam"));
