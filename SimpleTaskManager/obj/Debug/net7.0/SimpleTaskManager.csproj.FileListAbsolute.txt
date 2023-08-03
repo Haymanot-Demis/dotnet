@@ -1,0 +1,17 @@
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.csproj.AssemblyReference.cache
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.AssemblyInfoInputs.cache
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.AssemblyInfo.cs
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.csproj.CoreCompileInputs.cache
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\SimpleTaskManager.exe
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\SimpleTaskManager.deps.json
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\SimpleTaskManager.runtimeconfig.json
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\SimpleTaskManager.dll
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\SimpleTaskManager.pdb
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\CsvHelper.dll
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.csproj.CopyComplete
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.dll
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\refint\SimpleTaskManager.dll
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.pdb
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.genruntimeconfig.cache
+C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\ref\SimpleTaskManager.dll

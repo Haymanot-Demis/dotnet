@@ -1,12 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PackageReference Include="System.Globalization" Version="4.0.11" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>Student_Grade_Calculator</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
+  </ItemGroup>
 
 </Project>
