@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZXdddIYkEp/NQ1KU/OHQ70MO0hagR3nFZIrYnRarQqzlOtw7ai7yBSCTTuLqHxGw6dybBCebJZig8BV1uREqTQ==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\dotnet\\SimpleTaskManager\\SimpleTaskManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dell\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

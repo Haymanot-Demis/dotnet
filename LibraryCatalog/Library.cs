@@ -35,11 +35,13 @@ public class Library{
     public void PrintCatalog(){
         Console.WriteLine($"\nLibrary Name: {Name}\nAddress: {Address}\n");
         Console.WriteLine("Books:\n");
+
         foreach (Book book in Books)
         {
             Console.WriteLine($"Title: {book.Title}\nAuthor: {book.Author}\nISBN: {book.ISBN}\nPublication Year: {book.PublicationYear}");
         }
         Console.WriteLine("\nMedia Items:\n");
+        
         foreach (MediaItems mediaItem in MediaItems)
         {
             Console.WriteLine($"Title: {mediaItem.Title}\nMedia Type: {mediaItem.MediaType}\nDuration: {mediaItem.Duration}");
