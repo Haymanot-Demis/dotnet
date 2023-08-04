@@ -1,11 +1,12 @@
-using Automapper;
-class Automapper
+using AutoMapper;
+using System.Globalization;
+public class AutomapperConfig
 {
     public static MapperConfiguration GetMapperConfiguration()
     {
         var config = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<TaskDTO, Task>();
+            cfg.CreateMap<dynamic, Task>();
         });
 
         return config;

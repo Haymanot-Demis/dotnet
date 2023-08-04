@@ -13,7 +13,9 @@ class TaskManger
         var reader = new StreamReader("C:\\Projects\\dotnet\\SimpleTaskManager\\tasks.csv");
         var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture){HasHeaderRecord = false});
         var Tasks = csv.GetRecords<dynamic>();
-        tasks = Tasks.ToList();
+        var mapper = AutomapperConfig.GetMapperConfiguration().CreateMapper();
+        tasks = mapper.Map<List<Task>>(Tasks);
+        // tasks = Tasks.ToList();
         DisplayTasks();
     }
 
@@ -26,18 +28,12 @@ class TaskManger
         csv.WriteRecords(tasks);
     }
 
-    ~TaskManger()
-    {
-        var writer = new StreamWriter("tasks.csv");
-        var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-        csv.WriteRecords(tasks);
-    }
-
     // method for Adding a task
     public void AddTask(Task task)
     {
         tasks.Add(task);
     }
+    
     // Set a task completed
     public void SetTaskCompleted(Guid id)
     {
@@ -50,12 +46,12 @@ class TaskManger
         Console.WriteLine("ID\t\tName\t\tDescription\t\tCategory\t\tCompletion Status");
         foreach (var task in tasks)
         {
-            Console.WriteLine($"{task.Id}{task.Name}\t\t{task.Description}\t\t{task.Category}\t\t{task.IsCompleted}");
+            Console.WriteLine($"{task.Id}{task.Name ?? "Null"}\t\t{task.Description ?? "String.Empty"}\t\t{task.Category}\t\t{task.IsCompleted}");
         }
     }
 
     // filtering taks by category
-    public void FilterTasksByCategory(string category)
+    public void FilterTasksByCategory(Category category)
     {
         Console.WriteLine("ID\t\tName\t\tDescription\t\tCategory\t\tCompletion Status");
         List<Task> filteredTasks = new List<Task>();

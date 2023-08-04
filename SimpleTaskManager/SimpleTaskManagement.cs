@@ -13,8 +13,8 @@
         Console.WriteLine("Enter task description");
         string description = Console.ReadLine();
         Console.WriteLine("Enter task category");
-        string category = Console.ReadLine();
-        taskManger.AddTask(new Task("jkhf786", name, description, category));
+        Category category = (Category)Enum.Parse(typeof(Category) ,Console.ReadLine(), true);
+        taskManger.AddTask(new Task(name, description, category, Guid.NewGuid()));
     }
 
     private static void SetTaskCompleted(TaskManger taskManger){
@@ -25,7 +25,7 @@
     
     private static void FilterTasksByCategory(TaskManger taskManger){
         Console.WriteLine("Enter category");
-        string category = Console.ReadLine();
+        Category category = (Category)Enum.Parse(typeof(Category), Console.ReadLine());
         taskManger.FilterTasksByCategory(category);
     }
     public static void Main(string[] args){
@@ -54,11 +54,6 @@
                     break;
             }
         }
-    public static void Main(string[] args){
-        TaskManger taskManger = new TaskManger();
-    }
-}
-    public static void Main(string[] args){
-        TaskManger taskManger = new TaskManger();
+
     }
 }

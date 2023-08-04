@@ -15,3 +15,4 @@ C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\refint\SimpleTaskManager.d
 C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.pdb
 C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\SimpleTaskManager.genruntimeconfig.cache
 C:\Projects\dotnet\SimpleTaskManager\obj\Debug\net7.0\ref\SimpleTaskManager.dll
+C:\Projects\dotnet\SimpleTaskManager\bin\Debug\net7.0\AutoMapper.dll
