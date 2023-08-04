@@ -58,4 +58,7 @@
         TaskManger taskManger = new TaskManger();
     }
 }
+    public static void Main(string[] args){
+        TaskManger taskManger = new TaskManger();
+    }
 }
