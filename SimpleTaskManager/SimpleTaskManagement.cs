@@ -47,6 +47,7 @@
                     FilterTasksByCategory(taskManger);
                     break;
                 case 5:
+                    taskManger.SaveTasks();
                     Console.WriteLine("Exiting...");
                     return;
                 default:

@@ -10,9 +10,15 @@ class TaskManger
     // constructor
     public TaskManger()
     {
-        var reader = new StreamReader("C:\\Projects\\dotnet\\SimpleTaskManager\\tasks.csv");
-        var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture){HasHeaderRecord = false});
+        using var reader = new StreamReader("C:\\Projects\\dotnet\\SimpleTaskManager\\tasks.csv");
+        using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture){});
         var Tasks = csv.GetRecords<dynamic>();
+        var list_task = Tasks.ToList();
+        Console.WriteLine("ID\t\tName\t\tDescription\t\tCategory\t\tCompletion Status");
+        foreach (var task in list_task)
+        {
+            Console.WriteLine($"{task.Name ?? "Null"}\t\t{task.Description ?? "String.Empty"}\t\t{task.Category}\t\t{task.IsCompleted}");
+        }
         var mapper = AutomapperConfig.GetMapperConfiguration().CreateMapper();
         tasks = mapper.Map<List<Task>>(Tasks);
         // tasks = Tasks.ToList();
@@ -20,12 +26,18 @@ class TaskManger
     }
 
     // destructor
-    ~TaskManger()
+    public void SaveTasks()
     {
         Console.WriteLine("Saving tasks...");
-        var writer = new StreamWriter("C:\\Projects\\dotnet\\SimpleTaskManager\\tasks.csv");
-        var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+        using var writer = new StreamWriter("C:\\Projects\\dotnet\\SimpleTaskManager\\tasks.csv");
+        using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
         csv.WriteRecords(tasks);
+    }
+
+    // Finalizer
+    ~TaskManger()
+    {
+        SaveTasks();
     }
 
     // method for Adding a task
