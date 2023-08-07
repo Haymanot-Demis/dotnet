@@ -1,0 +1,9 @@
+/*
+Write a SQL query to find employees who have the highest salary in each of the departments.
+*/
+
+
+select Department.name as Department, Employee.name as Employee, Employee.salary as Salary from Employee cross join Department on Employee.departmentId = Department.id 
+where (Employee.departmentId, Employee.salary)
+in 
+(select d.id, MAX(e.salary) from Department as d join Employee as e on e.departmentId = d.id group by d.id);

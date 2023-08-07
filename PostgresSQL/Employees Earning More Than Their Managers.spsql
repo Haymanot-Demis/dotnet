@@ -1,0 +1,4 @@
+/*
+Write an SQL query to find the employees who earn more than their managers.
+*/
+select e.name as Employee  from Employee as e join Employee m on m.id = e.managerId where e.salary > m.salary;
