@@ -31,6 +31,8 @@ namespace WebApplication1.DBContexts
 
             modelBuilder.Entity<Comment>(entity => {
                 entity.HasKey(x => x.CommentId);
+                entity.Property(x => x.CreatedAt)
+                .HasDefaultValue(DateTime.UtcNow);
 
                 entity.HasOne(x => x.Post)
                     .WithMany(x => x.Comments)

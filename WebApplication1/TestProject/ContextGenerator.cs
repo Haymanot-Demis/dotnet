@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.DBContexts;
 
@@ -11,5 +12,12 @@ public static class ContextGenerator{
 
         var context = new AppDBContext(options);
         return context;
+    }
+
+    public static Mapper GetMapper(){
+        var config = new MapperConfiguration(cfg => {
+            cfg.AddProfile<AutomapperProfile>();
+        });
+        return new Mapper(config);
     }
 }

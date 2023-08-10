@@ -18,8 +18,11 @@ namespace TestProject
             // pass the optionsBuilder's options to the context
             var context = new AppDBContext(optionsBuilder.Options);
 
+            // set up mapper
+            var mapper = ContextGenerator.GetMapper();
+
             // setup the controller with the context
-            controller = new PostsController(context);
+            controller = new PostsController(context, mapper);
         }
 
         [Fact]
@@ -29,13 +32,12 @@ namespace TestProject
 
             // Arrange i.e setup the test
             // add a post using the controller and object initializer
-            var insert_res1 = await controller.Add(new Post{
-            PostId = 1, Title = "Post one", Content = "Post one"
+            var insert_res1 = await controller.Add(new CreatePostDto{
+                Title = "Post one", Content = "Post one"
             });
 
-            var insert_res2 = await controller.Add(new Post
+            var insert_res2 = await controller.Add(new CreatePostDto
             {
-               PostId = 2,
                Title = "Post two",
                Content = "Post two"
             });
@@ -64,18 +66,16 @@ namespace TestProject
             // Assert.Equal("Post one", post.Title);
         }
 
+
         [Fact]
-        public async Task Test_Add_Duplicate()
+        public async Task Test_GetOne_IdNotFound()
         {
-            // var controller = GenerateController();
+            // Act i.e call the method to be tested
+            var res = await controller.GetOne(100);
 
-            // Arrange i.e setup the test
-            var post = new Post{
-               PostId = 1, Title = "Post one", Content = "Post one"
-            };
-
-            // Act and Assert at the same time
-            await Assert.ThrowsAsync<ArgumentException>(() => controller.Add(post));
+            // Assert i.e check if the result is as expected
+            Assert.IsType<NotFoundResult>(res);
+            
         }
 
         [Fact]
@@ -84,8 +84,7 @@ namespace TestProject
             // var controller = GenerateController();
 
             // Arrange i.e setup the test
-            var post = new Post{
-                PostId = 1,
+            var post = new UpdatePostsDto{
                Title = "updated post", Content = "updated Post one"
             };
 
@@ -99,6 +98,24 @@ namespace TestProject
             Assert.Equal(updated_post.Content, post.Content);
         }
 
+
+        [Fact]
+        public async Task Test_Update_IdNotFound()
+        {
+            // var controller = GenerateController();
+
+            // Arrange i.e setup the test
+            var post = new UpdatePostsDto{
+               Title = "updated post", Content = "updated Post one"
+            };
+
+            // Act i.e call the method to be tested
+            var res = await controller.Update(100, post);
+
+            // Assert i.e check if the result is as expected
+            Assert.IsType<NotFoundResult>(res);
+        }
+
         [Fact]
         public void Test_Delete()
         {
@@ -109,6 +126,19 @@ namespace TestProject
 
             // Assert i.e check if the result is as expected
             Assert.IsType<NoContentResult>(res);
+        }
+
+
+        [Fact]
+        public void Test_Delete_IdNotFound()
+        {
+            // var controller = GenerateController();
+
+            // Act i.e call the method to be tested
+            var res = controller.Delete(100);
+
+            // Assert i.e check if the result is as expected
+            Assert.IsType<NotFoundResult>(res);
         }
 
     }

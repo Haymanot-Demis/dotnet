@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.DBContexts;
 
@@ -7,10 +8,12 @@ namespace WebApplication1.Controllers;
 [Route("[controller]")]
 public class PostsController : ControllerBase{
     private readonly AppDBContext _context;
+    private readonly IMapper _mapper;
 
-    public PostsController(AppDBContext context)
+    public PostsController(AppDBContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     [HttpGet("all")]
@@ -19,7 +22,7 @@ public class PostsController : ControllerBase{
         return Ok(posts);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), ActionName("GetOne")]
     public async Task<IActionResult> GetOne(int id)
     {
         var comments = _context.Comments.Where(c => c.PostId == id).ToList();  
@@ -35,19 +38,14 @@ public class PostsController : ControllerBase{
     }
 
     [HttpPost()]
-    public async Task<IActionResult> Add(Post post){
-        
-        if(ModelState.IsValid){
-            return ValidationProblem();
-        }
-
-        var res =  await _context.Posts.AddAsync(post);
+    public async Task<IActionResult> Add(CreatePostDto post){
+        var res =  await _context.Posts.AddAsync(_mapper.Map<Post>(post));
         await _context.SaveChangesAsync();
-        return CreatedAtAction("Creating post", post);
+        return CreatedAtAction(nameof(GetOne), new {Id = res.Entity.PostId} , res.Entity);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Post post){
+    public async Task<IActionResult> Update(int id, UpdatePostsDto post){
         var post_tobe_changed = await _context.Posts.FindAsync(id);
 
         if (post_tobe_changed == null)
@@ -55,10 +53,9 @@ public class PostsController : ControllerBase{
             return NotFound();
         }
 
-        _context.Entry(post_tobe_changed).CurrentValues.SetValues(post);
+        _mapper.Map(post, post_tobe_changed);
         _context.SaveChanges();
-        var updated = await _context.Posts.FindAsync(id);
-        return Ok(updated);
+        return Ok(post_tobe_changed);
     }
 
     [HttpDelete("{id}")]

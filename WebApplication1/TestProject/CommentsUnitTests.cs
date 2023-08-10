@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TestProject;
 using WebApplication1.Controllers;
-using WebApplication1.DBContexts;
-using Xunit;
 
 [Collection("Sequential")]
 public class CommentsUnitTests{
@@ -14,10 +11,13 @@ public class CommentsUnitTests{
     {
         // pass the optionsBuilder's options to the context
         var context = ContextGenerator.GetContext();
+        
+        // set up the mapper 
+        var mapper = ContextGenerator.GetMapper();
 
         // setup the controller with the context
-        controller = new CommentsController(context);
-        postController = new PostsController(context);
+        controller = new CommentsController(context, mapper);
+        postController = new PostsController(context, mapper);
     }
 
     [Fact]
@@ -34,15 +34,13 @@ public class CommentsUnitTests{
             // });
 
         // Add Comments 
-        var insert_res1 = await controller.Add(new Comment{
-            CommentId = 1, 
+        var insert_res1 = await controller.Add(new CreateCommentDto{
             Text = "Comment one", 
             PostId = 1
         });
 
-        var insert_res2 = await controller.Add(new Comment
+        var insert_res2 = await controller.Add(new CreateCommentDto
         {
-           CommentId = 2,
            Text = "Comment two",
            PostId = 2
         });
@@ -72,6 +70,17 @@ public class CommentsUnitTests{
         Assert.Equal(1, comment.CommentId);
     }
 
+
+    [Fact]
+    public async Task Test_GetOne_IdNotFound()
+    {
+        // Act i.e call the method to be tested
+        var res = controller.GetOne(100);
+
+        // Assert i.e check if the result is as expected
+        Assert.IsType<NotFoundResult>(res);
+    }
+
 }
 
 
@@ -82,17 +91,22 @@ public class Update_Comment_Test{
 
     public Update_Comment_Test()
     {
+        // set up the mapper 
+        var mapper = ContextGenerator.GetMapper();
+
+        // set the context
         var context = ContextGenerator.GetContext();
-        controller = new CommentsController(context);
+
+        // setup the controller with the context and mapper
+        controller = new CommentsController(context, mapper);
     }
 
     [Fact]
     public async Task Test_Update()
     {
         // Arrange i.e setup the test
-        var comment = new Comment
+        var comment = new UpdateCommentDto
         {
-            CommentId = 1,
             Text = "updated Comment one",
             PostId = 1
         };
@@ -105,6 +119,23 @@ public class Update_Comment_Test{
         Assert.Equal(200, res.StatusCode);
         Assert.Equal(comment.Text, updated_comment.Text);
     }
+
+    [Fact]
+    public async Task Test_Update_IdNotFound()
+    {
+        // Arrange i.e setup the test
+        var comment = new UpdateCommentDto
+        {
+            Text = "updated Comment one",
+            PostId = 1
+        };
+
+        // Act i.e call the method to be tested
+        var res = await controller.Update(100, comment);
+
+        // Assert i.e check if the result is as expected
+        Assert.IsType<NotFoundResult>(res);
+    }
 }
 
 [Collection("Sequential")]
@@ -113,8 +144,14 @@ public class Delete_Comment_Test{
 
     public Delete_Comment_Test()
     {
+        // set up the mapper 
+        var mapper = ContextGenerator.GetMapper();
+
+        // set the context
         var context = ContextGenerator.GetContext();
-        controller = new CommentsController(context);
+
+        // setup the controller with the context and mapper
+        controller = new CommentsController(context, mapper);
     }
 
     [Fact]
@@ -127,4 +164,15 @@ public class Delete_Comment_Test{
         Assert.IsType<NoContentResult>(res);
         Assert.IsType<NotFoundResult>(controller.GetOne(1));
     }
+
+    [Fact]
+    public async Task Test_Delete_IdNotFound()
+    {
+        // Act i.e call the method to be tested
+        var res = await controller.Delete(100);
+
+        // Assert i.e check if the result is as expected
+        Assert.IsType<NotFoundResult>(res);
+    }
+    
 }

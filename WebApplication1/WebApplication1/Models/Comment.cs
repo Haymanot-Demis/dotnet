@@ -5,9 +5,16 @@ public class Comment
 {
     [Key]   
     public int CommentId { get; set; }
+
+    [Required]
     public int PostId { get; set; }
     public Post? Post { get; set; }
+
+    [Required]
+    [DataType(DataType.Text)]
     public string? Text { get; set; }
-    public string? Author { get; set; }
+
+    [Required]
+    [DataType(DataType.DateTime)]
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 }
