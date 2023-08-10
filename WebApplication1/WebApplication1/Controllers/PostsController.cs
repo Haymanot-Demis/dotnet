@@ -36,9 +36,14 @@ public class PostsController : ControllerBase{
 
     [HttpPost()]
     public async Task<IActionResult> Add(Post post){
+        
+        if(ModelState.IsValid){
+            return ValidationProblem();
+        }
+
         var res =  await _context.Posts.AddAsync(post);
         await _context.SaveChangesAsync();
-        return Ok();
+        return CreatedAtAction("Creating post", post);
     }
 
     [HttpPut("{id}")]
@@ -67,7 +72,7 @@ public class PostsController : ControllerBase{
         var res = _context.Posts.Remove(post);
         Console.WriteLine(res.GetType());
         _context.SaveChanges();
-        return Ok();
+        return NoContent();
     }
 
 }

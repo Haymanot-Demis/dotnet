@@ -24,14 +24,14 @@ public class CommentsUnitTests{
     public async Task Testing_Add_And_GetAll()
     { 
         // Arrange i.e setup the test
-        // add a post using the controller and object initializer
-        // await postController.Add(new Post{
-        // PostId = 1, Title = "Post one", Content = "Post one"
-        // });
-        
-        // await postController.Add(new Post{
-        // PostId = 2, Title = "Post two", Content = "Post two"
-        // });
+            // add a post using the controller and object initializer
+            // await postController.Add(new Post{
+            // PostId = 1, Title = "Post one", Content = "Post one"
+            // });
+            
+            // await postController.Add(new Post{
+            // PostId = 2, Title = "Post two", Content = "Post two"
+            // });
 
         // Add Comments 
         var insert_res1 = await controller.Add(new Comment{
@@ -52,8 +52,8 @@ public class CommentsUnitTests{
         var comments = response.Value as List<Comment>;
 
         // Assert i.e check if the result is as expected
-        Assert.IsType<OkResult>(insert_res1);
-        Assert.IsType<OkResult>(insert_res2);
+        Assert.IsType<CreatedAtActionResult>(insert_res1);
+        Assert.IsType<CreatedAtActionResult>(insert_res2);
         Assert.NotNull(comments);    
         Assert.Equal(2, comments.Count);    
     }
@@ -107,7 +107,6 @@ public class Update_Comment_Test{
     }
 }
 
-
 [Collection("Sequential")]
 public class Delete_Comment_Test{
     private readonly CommentsController controller;
@@ -122,9 +121,10 @@ public class Delete_Comment_Test{
     public async Task Test_Delete()
     {
         // Act i.e call the method to be tested
-        var res = controller.Delete(1);
+        var res = await controller.Delete(1);
 
         // Assert i.e check if the result is as expected
-        Assert.IsType<OkResult>(res);
+        Assert.IsType<NoContentResult>(res);
+        Assert.IsType<NotFoundResult>(controller.GetOne(1));
     }
 }

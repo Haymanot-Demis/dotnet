@@ -45,8 +45,8 @@ namespace TestProject
             var posts = response.Value as List<Post>;
 
             // Assert i.e check if the result is as expected
-            Assert.IsType<OkResult>(insert_res1);
-            Assert.IsType<OkResult>(insert_res2);
+            Assert.IsType<CreatedAtActionResult>(insert_res1);
+            Assert.IsType<CreatedAtActionResult>(insert_res2);
             Assert.NotNull(posts);    
             Assert.Equal(2, posts.Count);    
         }
@@ -63,7 +63,6 @@ namespace TestProject
             Assert.Equal(1, post.PostId);
             // Assert.Equal("Post one", post.Title);
         }
-
 
         [Fact]
         public async Task Test_Add_Duplicate()
@@ -109,7 +108,7 @@ namespace TestProject
             var res = controller.Delete(1);
 
             // Assert i.e check if the result is as expected
-            Assert.IsType<OkResult>(res);
+            Assert.IsType<NoContentResult>(res);
         }
 
     }

@@ -29,12 +29,11 @@ public class CommentsController : ControllerBase{
         return Ok(comment);
     }
 
-
     [HttpPost()]
     public async Task<IActionResult> Add(Comment comment){
         var result = await _context.Comments.AddAsync(comment);
         await _context.SaveChangesAsync();
-        return Ok();
+        return CreatedAtAction("Creating comment", comment);
     }
 
     [HttpPut("{id}")]
@@ -61,14 +60,15 @@ public class CommentsController : ControllerBase{
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id){
+    public async Task<IActionResult> Delete(int id){
         var comment = _context.Comments.Find(id);
         if (comment == null)
         {
             return NotFound();
         }
         var res = _context.Comments.Remove(comment);
-        return Ok();
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 
 }
