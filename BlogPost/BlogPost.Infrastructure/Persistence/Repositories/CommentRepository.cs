@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace BlogPost.Infrastructure.Persistence.Repositories
 {
-    internal class CommentRepsitory : ICommentRepository
+    internal class CommentRepository : ICommentRepository
     {
         private readonly List<Comment> _comments;   
-        public CommentRepsitory()
+        public CommentRepository()
         {
             _comments = new List<Comment>();
         }
 
-        public Task<List<Comment>> GetAllAsync()
+        public List<Comment> GetAll()
         {
             var comments = _comments.ToList();
-            return Task.FromResult(comments);
+            return comments;
         }
 
         public Task<Comment> AddAsync(Comment item)

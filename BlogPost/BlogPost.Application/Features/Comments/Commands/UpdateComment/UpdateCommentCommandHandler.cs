@@ -40,7 +40,7 @@ namespace BlogPost.Application.Features.Comments.Commands.UpdateComment
             }
 
             var updated_comment = _mapper.Map(request, comment_tobe_updated);
-            return updated_comment;                                                
+            return updated_comment;            
         }
     }
 }

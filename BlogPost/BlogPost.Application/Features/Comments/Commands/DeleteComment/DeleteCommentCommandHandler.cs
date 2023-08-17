@@ -18,7 +18,7 @@ namespace BlogPost.Application.Features.Comments.Commands.DeleteComment
             _commentRepository = commentRepository;
         }
 
-        public async Task Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
         {
             var validator = new DeleteCommentCommandValidator();
             var validationResult = validator.Validate(request);
@@ -30,6 +30,7 @@ namespace BlogPost.Application.Features.Comments.Commands.DeleteComment
             }
 
             await _commentRepository.DeleteAsync(comment);
+            return Unit.Value;
         }
     }
 }

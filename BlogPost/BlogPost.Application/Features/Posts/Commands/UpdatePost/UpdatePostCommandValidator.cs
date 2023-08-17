@@ -15,7 +15,6 @@ namespace BlogPost.Application.Features.Posts.Commands.UpdatePost
 
             RuleFor(x => x.Title).ToString();
             RuleFor(x => x.Content).ToString();
-
         }
     }
 }

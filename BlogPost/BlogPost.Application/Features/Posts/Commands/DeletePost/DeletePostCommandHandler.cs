@@ -1,5 +1,6 @@
 ﻿using BlogPost.Application.Exceptions;
 using BlogPost.Application.Interfaces.Repositories;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -18,24 +19,25 @@ namespace BlogPost.Application.Features.Posts.Commands.DeletePost
             _postRepository = postRepository;
         }
 
-        public async Task Handle(DeletePostCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeletePostCommand request, CancellationToken cancellationToken)
         {
             var validator = new DeletePostCommandValidator();
             var validationResult = await validator.ValidateAsync(request);
 
             if (!validationResult.IsValid) 
             {
-                throw new BadRequestException();
+                throw new ValidationException(validationResult.Errors);
             }
 
             var post = await _postRepository.GetByIdAsync(request.Id);
 
             if (post == null)
             {
-                throw new NotFoundException();
+                throw new NotFoundException($"Object with id {request.Id} not found");
             }
 
-            await _postRepository.DeleteAsync(post);                        
+            await _postRepository.DeleteAsync(post);
+            return Unit.Value;
         }
     }
 }

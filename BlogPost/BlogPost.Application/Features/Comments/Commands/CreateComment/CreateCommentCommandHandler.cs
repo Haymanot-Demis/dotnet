@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace BlogPost.Application.Features.Comments.Commands.CreateComment
 {
-    public class CreateCommentHandler : IRequestHandler<CreateCommentCommand, Comment>
+    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, Comment>
     {
         private readonly ICommentRepository _commentRepository;
         private readonly IMapper _mapper;
-        public CreateCommentHandler(ICommentRepository repository, IMapper mapper) {
+        public CreateCommentCommandHandler(ICommentRepository repository, IMapper mapper) {
             _commentRepository = repository;
             _mapper = mapper;
         }
